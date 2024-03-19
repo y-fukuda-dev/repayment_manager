@@ -13,34 +13,12 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">家族貸し借り管理</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">ホーム <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/dashboard">ダッシュボード</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/new">新規追加</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">設定</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+  <!-- 共通ヘッダ読み込み -->
+  <div th:replace="header :: header"></div>
 
 
   <div class="container mt-5">
-    <h2>貸し借りの記録</h2>
+    <h2>お金の記録</h2>
     <table class="table">
       <thead class="thead-dark">
         <tr>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アプリケーション設定</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Custom styles here */
+    </style>
+</head>
+<body>
+
+    <!-- 共通ヘッダ読み込み -->
+    <div th:replace="header :: header"></div>
+
+<div class="container mt-5">
+    <h2>アプリケーション設定</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">デフォルト設定</h5>
+            <form>
+                <div class="form-group">
+                    <label for="currency">通貨</label>
+                    <select class="form-control" id="currency">
+                        <option>USD</option>
+                        <option>JPY</option>
+                        <option>EUR</option>
+                        <option>GBP</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="language">言語</label>
+                    <select class="form-control" id="language">
+                        <option>日本語</option>
+                        <option>English</option>
+                        <option>Français</option>
+                        <option>Deutsch</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">保存</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

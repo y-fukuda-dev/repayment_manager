@@ -12,39 +12,16 @@
     </style>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">家族貸し借り管理</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
     
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/">ホーム <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/dashboard">ダッシュボード</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/new">新規追加</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">設定</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!-- 共通ヘッダ読み込み -->
+    <div th:replace="header :: header"></div>
     
-
 <div class="container mt-5">
     <div class="jumbotron">
-        <h1 class="display-4">家族貸し借り管理へようこそ！</h1>
-        <p class="lead">このウェブアプリは、家族間での貸し借りの返済を管理するための便利なツールです。</p>
+        <h1 class="display-4">お金管理へようこそ！</h1>
+        <p class="lead">このウェブアプリは、お金のやり取りを管理するための便利なツールです。</p>
         <hr class="my-4">
-        <p>貸し借りの記録を管理し、返済期限を見逃さないようにしましょう。</p>
+        <p>お金のやり取りを管理し、返済期限を見逃さないようにしましょう。</p>
         <a class="btn btn-primary btn-lg" href="/dashboard" role="button">始める</a>
     </div>
 </div>
