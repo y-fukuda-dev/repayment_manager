@@ -15,4 +15,14 @@ public class HomeController {
     public String dashboard() {
         return "dashboard"; // src/main/resources/templates/dashboard.html を返す
     }
+
+    @GetMapping("/new")
+    public String showNewForm() {
+        return "new_form"; // src/main/resources/templates/new_form.html を返す
+    }
+
+    @GetMapping("/setting")
+    public String setting() {
+        return "setting"; // src/main/resources/templates/new_form.html を返す
+    }
 }
