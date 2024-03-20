@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>アプリケーション設定</title>
+    <title>お金管理</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Custom CSS -->
@@ -17,16 +17,16 @@
     <div th:replace="header :: header"></div>
 
 <div class="container mt-5">
-    <h2>アプリケーション設定</h2>
+    <h2>各種設定</h2>
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">デフォルト設定</h5>
+            <!-- <h5 class="card-title">デフォルト設定</h5> -->
             <form>
                 <div class="form-group">
                     <label for="currency">通貨</label>
                     <select class="form-control" id="currency">
-                        <option>USD</option>
                         <option>JPY</option>
+                        <option>USD</option>
                         <option>EUR</option>
                         <option>GBP</option>
                     </select>
