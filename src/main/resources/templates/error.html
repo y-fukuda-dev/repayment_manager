@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        
+    <!-- 共通ヘッダ読み込み -->
+    <div th:replace="header :: header"></div>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Custom styles here */
+        body {
+            background-color: #f8f9fa;
+        }
+        .error-container {
+            margin-top: 50px;
+        }
+        .error-heading {
+            font-size: 36px;
+            color: #dc3545;
+        }
+        .error-message {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container error-container">
+        <div class="jumbotron">
+            <h1 class="error-heading">Error</h1>
+            <p class="error-message">予期せぬ動作により、エラーが発生しました。前のページに戻ってください。</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

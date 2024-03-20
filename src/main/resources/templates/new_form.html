@@ -20,8 +20,8 @@
 <div class="container mt-5">
     <h2>新しく追加する</h2>
     <form  th:action="@{/add}" th:object="${repaymentInformation}" method="get">
-        <label for="repaymentAmt">金額</label>
-        <input type="number" th:field="{repaymentAmt}" placeholder="金額を入力してください">
+        <label>金額</label>
+        <input type="number" th:field="${repaymentAmt}" placeholder="金額を入力してください">
 
         <button>追加</button>
     </form>
