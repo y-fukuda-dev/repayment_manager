@@ -35,11 +35,20 @@
           <td>1000円</td>
           <td>2024/03/25</td>
           <td>2024/03/25</td>
-          <td><span class="badge badge-warning">未返済</span></td>
+          <td>
+            <form action="/changeStatus" method="GET">
+                <button type="submit" class="btn btn-warning btn-sm">未返済</button>
+            </form>
+          </td>
+        
         </tr>
         <!-- 他の貸し借りの記録も同様に表示 -->
       </tbody>
     </table>
+
+    <div id="total" style="font-size: 3.0em; text-align: right; margin-top: 100px;">
+      残り合計：50円
+    </div>
   </div>
 
   <!-- Bootstrap JavaScript -->
