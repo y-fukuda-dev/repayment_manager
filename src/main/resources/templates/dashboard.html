@@ -30,26 +30,36 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>1000円</td>
-          <td>2024/03/25</td>
-          <td>2024/03/25</td>
+        <!-- 各貸し借りの記録を繰り返し表示 -->
+        <tr th:each="info, iterStat : ${informationList.repaymentInformation}">
+          <th scope="row" th:text="${iterStat.count}">1</th>
+          <td th:text="${info.repaymentAmt} + '円'">1000円</td>
+          <!-- 日付の表示形式を変更 -->
+          <td th:text="${#dates.format(info.registerDt, 'yyyy/MM/dd')}">2024/03/25</td>
+          <td th:text="${#dates.format(info.repaymentDt, 'yyyy/MM/dd')}">2024/03/25</td>
           <td>
             <form action="/changeStatus" method="GET">
-                <button type="submit" class="btn btn-warning btn-sm">未返済</button>
+                <!-- ステータスに応じてボタンの表示を変更 -->
+                <button type="submit" class="btn btn-success btn-sm" th:if="${info.status}">返済済み</button>
+                <button type="submit" class="btn btn-warning btn-sm" th:unless="${info.status}">未返済</button>
             </form>
           </td>
-        
         </tr>
-        <!-- 他の貸し借りの記録も同様に表示 -->
       </tbody>
     </table>
 
     <div id="total" style="font-size: 3.0em; text-align: right; margin-top: 100px;">
-      残り合計：50円
+      残り合計：50円 <!-- ここも動的に変更する必要があれば修正してください -->
     </div>
   </div>
+
+  <style>
+    /* ナビゲーションバーのリンクにマウスを合わせたときのスタイル */
+    .navbar-nav .nav-item .nav-link:hover {
+        background-color: #fff !important; /* 背景色を白色に設定 */
+        color: #000 !important; /* テキスト色を黒色に設定 */
+    }
+  </style>
 
   <!-- Bootstrap JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

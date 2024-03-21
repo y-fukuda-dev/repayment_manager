@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,13 +18,21 @@
 
 <div class="container mt-5">
     <h2>新しく追加する</h2>
-    <form  th:action="@{/add}" th:object="${repaymentInformation}" method="get">
-        <label>金額</label>
-        <input type="number" th:field="${repaymentAmt}" placeholder="金額を入力してください">
+    <form action="/add" method="post" th:object="${RepaymentInformation}">
+        <label for="repaymentAmt">金額</label>
+        <input type="number" id="repaymentAmt" name="repaymentAmt" placeholder="金額を入力してください">
 
-        <button>追加</button>
+        <button type="submit">追加</button>
     </form>
 </div>
+
+<style>
+    /* ナビゲーションバーのリンクにマウスを合わせたときのスタイル */
+    .navbar-nav .nav-item .nav-link:hover {
+        background-color: #fff !important; /* 背景色を白色に設定 */
+        color: #000 !important; /* テキスト色を黒色に設定 */
+    }
+</style>
 
 <!-- Bootstrap JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
