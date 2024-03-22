@@ -31,7 +31,7 @@
       </thead>
       <tbody>
         <!-- 各貸し借りの記録を繰り返し表示 -->
-        <tr th:each="info, iterStat : ${informationList.repaymentInformation}">
+        <tr th:each="info, iterStat : ${informationList}">
           <th scope="row" th:text="${iterStat.count}">1</th>
           <td th:text="${info.repaymentAmt} + '円'">1000円</td>
           <!-- 日付の表示形式を変更 -->
