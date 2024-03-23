@@ -119,7 +119,7 @@ public class HomeController {
         information.setRegisterDt(Date.from(instant));
 
         repaymentInformationRepository.save(information);
-        return "dashboard";
+        return "redirect:/dashboard";
     }
 
     /**
