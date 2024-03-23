@@ -3,6 +3,7 @@ package com.example.repayment_manager.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.repayment_manager.model.RepaymentInformation;
@@ -33,7 +34,8 @@ public class GetRepaymentInformationService {
             getAllRepaymentInformation(GetRepaymentInformationServiceInDto inDto) {
         
         // RepaymentInformationテーブルのレコードを全て取得
-        List<RepaymentInformation> informationList = repaymentInformationRepository.findAll();
+        List<RepaymentInformation> informationList = 
+                repaymentInformationRepository.findAll(Sort.by(Sort.Direction.ASC, "number"));
         
         // 応答編集
         GetRepaymentInformationServiceOtDto otDto = new GetRepaymentInformationServiceOtDto();

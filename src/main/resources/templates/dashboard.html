@@ -39,9 +39,10 @@
           <td th:text="${#dates.format(info.repaymentDt, 'yyyy/MM/dd')}">2024/03/25</td>
           <td>
             <form action="/changeStatus" method="GET">
+              <input type="hidden" name="number" value="">
                 <!-- ステータスに応じてボタンの表示を変更 -->
-                <button type="submit" class="btn btn-success btn-sm" th:if="${info.status}">返済済み</button>
-                <button type="submit" class="btn btn-warning btn-sm" th:unless="${info.status}">未返済</button>
+                <button type="button" class="btn btn-success btn-sm" th:if="${info.status}" onclick="sendRowNumber(this)">返済済み</button>
+                <button type="button" class="btn btn-warning btn-sm" th:unless="${info.status}" onclick="sendRowNumber(this)">未返済</button>
             </form>
           </td>
         </tr>
@@ -60,6 +61,22 @@
         color: #000 !important; /* テキスト色を黒色に設定 */
     }
   </style>
+
+<script>
+  function sendRowNumber(button) {
+    // ボタンが属している行を取得
+    var row = button.closest('tr');
+    // 行から「#」の数値を取得
+    var rowNumber = row.querySelector('th').innerText;
+    // フォームを取得
+    var form = button.closest('form');
+    // フォームに「#」の数値を設定
+    form.querySelector('input[name="number"]').value = rowNumber;
+    // フォームを送信
+    form.submit();
+  }
+</script>
+
 
   <!-- Bootstrap JavaScript -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

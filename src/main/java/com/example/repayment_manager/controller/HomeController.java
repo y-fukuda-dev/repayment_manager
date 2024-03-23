@@ -15,6 +15,9 @@ import com.example.repayment_manager.repository.RepaymentInformationRepository;
 import com.example.repayment_manager.service.AddRepaymentInformationService;
 import com.example.repayment_manager.service.AddRepaymentInformationServiceInDto;
 import com.example.repayment_manager.service.AddRepaymentInformationServiceOtDto;
+import com.example.repayment_manager.service.EditRepaymentInformationService;
+import com.example.repayment_manager.service.EditRepaymentInformationServiceInDto;
+import com.example.repayment_manager.service.EditRepaymentInformationServiceOtDto;
 import com.example.repayment_manager.service.GetRepaymentInformationService;
 import com.example.repayment_manager.service.GetRepaymentInformationServiceInDto;
 import com.example.repayment_manager.service.GetRepaymentInformationServiceOtDto;
@@ -30,6 +33,8 @@ public class HomeController {
 
     AddRepaymentInformationService addRpyInfService;
 
+    EditRepaymentInformationService editRpyInfService;
+
     /**
      * コンストラクタ
      * @param repaymentInformationRepository
@@ -42,12 +47,14 @@ public class HomeController {
         RepaymentInformationRepository repaymentInformationRepository, 
         RepaymentInformationList repaymentInformationList, 
         GetRepaymentInformationService getRpyInfService, 
-        AddRepaymentInformationService addRpyInfService) {
+        AddRepaymentInformationService addRpyInfService, 
+        EditRepaymentInformationService editRpyInfService) {
 
         this.repaymentInformationRepository = repaymentInformationRepository;
         this.repeymentInformationList = repaymentInformationList;
         this.getRpyInfService = getRpyInfService;
         this.addRpyInfService = addRpyInfService;
+        this.editRpyInfService = editRpyInfService;
     }
 
     /**
@@ -97,13 +104,10 @@ public class HomeController {
      * @return dashboard.html
      */
     @GetMapping("/changeStatus") 
-    public String changeStatus(Model model) {
-        // 全レコードを取得
-        List<RepaymentInformation> rows = repaymentInformationRepository.findAll();
-        repeymentInformationList.setRepaymentInformation(rows);
-        model.addAttribute("informationList", repeymentInformationList);
-        
-        return "dashboard"; // src/main/resources/templates/dashboard.html を返す
+    public String changeStatus(
+        @ModelAttribute EditRepaymentInformationServiceInDto inDto) {
+        EditRepaymentInformationServiceOtDto otDto = editRpyInfService.changeRepaymentStatus(inDto);
+        return "redirect:/dashboard"; // src/main/resources/templates/dashboard.html を返す
     }
 
     /**
