@@ -10,5 +10,5 @@ import com.example.repayment_manager.model.RepaymentInformation;
 public interface RepaymentInformationRepository extends JpaRepository<RepaymentInformation, Long> {
     
     @Query("SELECT MAX(r.number) FROM RepaymentInformation r")
-    Integer findMaxNumber();
+    Long findMaxNumber();
 }

@@ -1,9 +1,5 @@
 package com.example.repayment_manager.controller;
 
-import java.util.Date;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.example.repayment_manager.model.RepaymentInformation;
 import com.example.repayment_manager.model.RepaymentInformationList;
 import com.example.repayment_manager.repository.RepaymentInformationRepository;
+import com.example.repayment_manager.service.AddRepaymentInformationService;
+import com.example.repayment_manager.service.AddRepaymentInformationServiceInDto;
+import com.example.repayment_manager.service.AddRepaymentInformationServiceOtDto;
 import com.example.repayment_manager.service.GetRepaymentInformationService;
 import com.example.repayment_manager.service.GetRepaymentInformationServiceInDto;
 import com.example.repayment_manager.service.GetRepaymentInformationServiceOtDto;
@@ -29,21 +28,26 @@ public class HomeController {
 
     GetRepaymentInformationService getRpyInfService;
 
+    AddRepaymentInformationService addRpyInfService;
+
     /**
      * コンストラクタ
      * @param repaymentInformationRepository
      * @param repaymentInformationList
      * @param getRpyInfService
+     * @param addRpyInfService
      */
     @Autowired
     public HomeController(
         RepaymentInformationRepository repaymentInformationRepository, 
         RepaymentInformationList repaymentInformationList, 
-        GetRepaymentInformationService getRpyInfService) {
+        GetRepaymentInformationService getRpyInfService, 
+        AddRepaymentInformationService addRpyInfService) {
 
         this.repaymentInformationRepository = repaymentInformationRepository;
         this.repeymentInformationList = repaymentInformationList;
         this.getRpyInfService = getRpyInfService;
+        this.addRpyInfService = addRpyInfService;
     }
 
     /**
@@ -110,15 +114,8 @@ public class HomeController {
      */
     @PostMapping("/add")
     public String addInformation(
-        @ModelAttribute RepaymentInformation information) {
-        // 新規追加レコードの採番
-        long number = 1 + repaymentInformationRepository.findMaxNumber();
-        information.setNumber(number);
-        information.setStatus(false);
-        Instant instant = LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
-        information.setRegisterDt(Date.from(instant));
-
-        repaymentInformationRepository.save(information);
+        @ModelAttribute AddRepaymentInformationServiceInDto inDto) {
+        AddRepaymentInformationServiceOtDto otDto = addRpyInfService.addRepaymentInformation(inDto);
         return "redirect:/dashboard";
     }
 
