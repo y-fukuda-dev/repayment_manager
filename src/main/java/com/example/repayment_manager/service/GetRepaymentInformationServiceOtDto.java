@@ -11,6 +11,8 @@ import lombok.Setter;
 @Setter
 public class GetRepaymentInformationServiceOtDto {
 
+    private Long repaymentAmtTotal;
+
     private List<RepaymentInformation> repaymentInformation;
 
 }

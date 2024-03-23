@@ -74,8 +74,11 @@ public class HomeController {
     @GetMapping("/dashboard")
     public String dashboard(Model model) {
         GetRepaymentInformationServiceInDto inDto = new GetRepaymentInformationServiceInDto();
-        GetRepaymentInformationServiceOtDto otDto = getRpyInfService.getAllRepaymentInformation(inDto);
-        model.addAttribute("informationList", otDto.getRepaymentInformation());
+        GetRepaymentInformationServiceOtDto otDto1 = getRpyInfService.getAllRepaymentInformation(inDto);
+        GetRepaymentInformationServiceOtDto otDto2 = getRpyInfService.getRepaymentAmtTotal();
+
+        model.addAttribute("informationList", otDto1.getRepaymentInformation());
+        model.addAttribute("repaymentAmtTotal", otDto2.getRepaymentAmtTotal());
         return "dashboard"; // src/main/resources/templates/dashboard.html を返す
     }
 

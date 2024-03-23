@@ -1,5 +1,6 @@
 package com.example.repayment_manager.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,8 +20,11 @@ public interface RepaymentInformationRepository extends JpaRepository<RepaymentI
     @Query("SELECT r FROM RepaymentInformation r WHERE number = :number")
     RepaymentInformation findRepaymentInformation(Long number);
 
+    @Query("SELECT SUM(r.repaymentAmt) FROM RepaymentInformation r WHERE status = false")
+    Long getRepaymentAmtTotal();
+
     @Transactional
     @Modifying
-    @Query("UPDATE RepaymentInformation SET status = :status WHERE number = :number")
-    Integer changeRepaymentStatus(Long number, boolean status);
+    @Query("UPDATE RepaymentInformation SET status = :status, repaymentDt = :repaymentDt WHERE number = :number")
+    Integer changeRepaymentStatus(Long number, boolean status, Date repaymentDt);
 }
